@@ -5,3 +5,4 @@ authors = ["Richo Healey <richo@psych0tik.net>"]
 
 [dependencies]
 iron = "*"
+stripe = "*"
