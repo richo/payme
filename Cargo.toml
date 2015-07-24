@@ -2,3 +2,6 @@
 name = "payme"
 version = "0.1.0"
 authors = ["Richo Healey <richo@psych0tik.net>"]
+
+[dependencies]
+iron = "*"
