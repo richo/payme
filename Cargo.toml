@@ -8,6 +8,7 @@ authors = ["Richo Healey <richo@psych0tik.net>"]
 iron = "*"
 mount = "*"
 staticfile = "*"
+urlencoded = "*"
 
 # Stripe
 stripe = "*"
