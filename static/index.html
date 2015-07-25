@@ -2,10 +2,29 @@
 <html lang=en>
     <head>
         <meta charset=utf-8>
-        <title></title>
+        <title>give richo some loot</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </head>
     <body>
-        hi
+        <label for="amount">how much</label>
+        <input type="text" placeholder="0" id="amount"></input>
+        <form action="/charge" method="POST">
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                                                  data-key="pk_test_Ps1nLdTDidnXZ8wxaZwFCVok"
+                                                                  data-image="/img/documentation/checkout/marketplace.png"
+                                                                  data-name="psych0tik.net"
+                                                                  data-description="richo"
+                                                                  data-amount="0"
+                                                                  id="payment">
+            </script>
+        </form>
+        <script type="text/javascript">
+$("#amount").change(function() {
+    var amt = $("#amount").val();
+    console.log("Amount changed to " + amt);
+    $("#payment").attr("data-amount", amt);
+});
+        </script>
     </body>
 </html>
 
