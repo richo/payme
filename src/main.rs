@@ -20,7 +20,7 @@ fn charge(req: &mut Request) -> IronResult<Response> {
     let mut buf: Vec<u8> = vec![];
     match req.get_ref::<UrlEncodedBody>() {
         Ok(ref hashmap) => println!("Parsed POST request body string:\n {:?}", hashmap),
-        Err(ref e) => println!("{:?}", e)
+        Err(ref e) => return Ok(Response::with((status::InternalServerError, e.to_string()))),
     };
 
     Ok(Response::with((status::Ok, "Got it")))
