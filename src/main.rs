@@ -16,6 +16,7 @@ use urlencoded::UrlEncodedBody;
 
 use stripe::connection::Connection;
 use stripe::customer::Customer;
+use stripe::charge::Charge;
 
 fn hello_world(_: &mut Request) -> IronResult<Response> {
     Ok(Response::with((status::Ok, "Hello World!")))
@@ -34,12 +35,12 @@ fn charge(req: &mut Request) -> IronResult<Response> {
             let token = hashmap.get("stripeToken").unwrap()[0].clone();
 
             let customer = Customer::create(get_conn(), email, token);
+
+            let charge = Charge::create(get_conn(), 500, customer);
+            return Ok(Response::with((status::Ok, format!("{:?}", charge))))
         },
         Err(ref e) => return Ok(Response::with((status::InternalServerError, e.to_string()))),
     };
-
-    Ok(Response::with((status::Ok, "Got it")))
-
 }
 
 fn main() {
